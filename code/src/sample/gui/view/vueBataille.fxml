@@ -6,21 +6,52 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            >
+<?import javafx.geometry.Insets?>
+<?import sample.gui.view.Grille?>
 
-    <HBox>
-        <Label text="0:0" fx:id="chrono" />
-        <Button text="Pause" onAction="#pause"/>
-    </HBox>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml">
 
-    <HBox>
-        <Label text="Message IA" fx:id="labelIA"/>
-        <Label text="Message Joueur" fx:id="labelJoueur"/>
-    </HBox>
+    <top>
 
-    <HBox>
-    </HBox>
+        <HBox alignment="CENTER" fillHeight="true">
+            <Label text="0:00" fx:id="chrono" HBox.hgrow="ALWAYS" maxWidth="-Infinity"/>
+            <Button text="Pause" onAction="#pause"/>
+        </HBox>
 
-</VBox>
+    </top>
+
+
+
+    <left>
+        <ScrollPane>
+            <Label text="Message IA" fx:id="labelIA"/>
+        </ScrollPane>
+    </left>
+
+
+
+    <center>
+        <Grille></Grille>
+    </center>
+
+
+
+    <right>
+        <ScrollPane>
+            <Label text="Message joueur" fx:id="labelJoueur"/>
+        </ScrollPane>
+    </right>
+
+
+
+    <bottom>
+
+    </bottom>
+
+
+
+
+
+
+</BorderPane>

@@ -29,8 +29,6 @@ public class BatailleController extends BaseController {
 
     @FXML
     private void pause(ActionEvent actionEvent) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource(PAUSE_FXML));
-
-        stage.setScene(new Scene(root, Main.WIN_WIDTH, Main.WIN_HEIGHT));
+        changeStage(PAUSE_FXML, new PauseController(getStage()));
     }
 }

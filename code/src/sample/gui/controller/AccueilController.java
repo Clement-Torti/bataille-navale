@@ -10,12 +10,14 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import sample.launcher.Main;
 
+import java.io.IOException;
 import java.net.URL;
 
 
 public class AccueilController extends BaseController {
 
     private static final String BATAILLE_FXML = "../view/vueBataille.fxml";
+    private static final String INFOS_FXML = "../view/vueInfos.fxml";
 
     public AccueilController(Stage stage) {
         super(stage);
@@ -23,18 +25,11 @@ public class AccueilController extends BaseController {
 
     @FXML
     private void start(ActionEvent actionEvent) throws Exception {
-        URL url = getClass().getResource(BATAILLE_FXML);
-        FXMLLoader loader = new FXMLLoader(url);
-
-        loader.setController(new BatailleController(stage));
-
-        Parent root = loader.load();
-
-        stage.setScene(new Scene(root, Main.WIN_WIDTH, Main.WIN_HEIGHT));
+        changeStage(BATAILLE_FXML, new BatailleController(getStage()));
     }
 
     @FXML
-    private void infos(ActionEvent actionEvent) {
-
+    private void infos(ActionEvent actionEvent) throws IOException {
+        openStage(INFOS_FXML, 800, 500);
     }
 }
