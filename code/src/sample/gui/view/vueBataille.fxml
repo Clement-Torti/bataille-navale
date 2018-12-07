@@ -9,16 +9,19 @@
 <?import javafx.geometry.Insets?>
 <?import sample.gui.view.Grille?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import sample.gui.view.IAGrid?>
+<?import sample.gui.view.PlayerGrid?>
+<?import sample.gui.view.BoatsBox?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml">
 
     <top>
-
         <HBox alignment="CENTER" fillHeight="true">
             <Label text="0:00" fx:id="chrono" HBox.hgrow="ALWAYS" maxWidth="-Infinity"/>
             <Button text="Pause" onAction="#pause"/>
         </HBox>
-
     </top>
 
 
@@ -32,7 +35,18 @@
 
 
     <center>
-        <Grille></Grille>
+            <HBox alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets top="100" bottom="100"/>
+                </BorderPane.margin>
+                <IAGrid/>
+                <PlayerGrid>
+                    <padding>
+                        <Insets left="100"/>
+                    </padding>
+                </PlayerGrid>
+            </HBox>
+
     </center>
 
 
@@ -46,7 +60,14 @@
 
 
     <bottom>
+        <HBox alignment="CENTER">
+            <BorderPane.margin>
+                <Insets top="20" bottom="20"/>
+            </BorderPane.margin>
+            <BoatsBox/>
+            <BoatsBox/>
 
+        </HBox>
     </bottom>
 
 
