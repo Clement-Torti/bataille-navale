@@ -5,7 +5,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<VBox  xmlns:fx="http://javafx.com/fxml" alignment="center" spacing="10">
+<?import javafx.scene.layout.Border?>
+<?import sample.gui.view.TableauScore?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml" alignment="center" spacing="10">
     <Button text="Start" onAction="#start"/>
     <Button text="Infos" onAction="#infos"/>
+
+    <TableauScore style="-fx-background-color: #336699;">
+        <VBox.margin>
+            <Insets top="10" left="100" right="100"/>
+        </VBox.margin>
+    </TableauScore>
 </VBox>

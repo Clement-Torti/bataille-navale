@@ -44,7 +44,7 @@ public abstract class BaseController {
 
         newStage.setTitle("Infos");
         newStage.setScene(new Scene(root, width, height));
-        newStage.show();
+        newStage.showAndWait();
 
     }
 }
