@@ -3,20 +3,30 @@ package sample.gui.view;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
+import sample.gui.view.DecoratorButton.CaseButton;
+import sample.gui.view.DecoratorButton.TouchedDecoratorButton;
+import sample.model.GrilleMdl;
+import sample.model.Point;
+
+import java.util.ArrayList;
 
 public abstract class Grille extends GridPane {
-    private final int NB_ROW = 11;
-    private final int NB_COLUMN = 11;
-    private final int WIDHT = 450;
-    private final int HEIGHT = 450;
+    protected final int NB_ROW = 11;
+    protected final int NB_COLUMN = 11;
+    private final int WIDHT = 600;
+    private final int HEIGHT = 600;
+
+    // List des button de la grille
+    protected CaseButton[][] buttonList = new CaseButton[10][10];
 
     public Grille() {
         super();
 
         // Création de toutes les colonnes
         for(int i=0; i<NB_COLUMN; i++) {
-            ColumnConstraints col = new ColumnConstraints(20, WIDHT / NB_COLUMN, 50);
+            ColumnConstraints col = new ColumnConstraints(20, WIDHT / NB_COLUMN, 100);
 
             this.getColumnConstraints().add(col);
         }
@@ -45,11 +55,27 @@ public abstract class Grille extends GridPane {
         // Ajout des buttons
         for(int i=0; i<NB_ROW-1; i++) {
             for(int j=0; j<NB_COLUMN-1; j++) {
-                String text = i + "," + j;
-                CaseButton button = new CaseButton(text);
-                this.add(button, j + 1, i + 1);
+                // Méthode abstraite implémentée par les filles
+                buttonList[i][j] = configureStandardButton(i, j);
+
+                buttonList[i][j].setPrefSize(WIDHT/NB_ROW, WIDHT/NB_COLUMN);
+                this.add(buttonList[i][j], j + 1, i + 1);
+
             }
         }
-
     }
+
+    protected abstract CaseButton configureStandardButton(int x, int y);
+
+    protected void buttonClicked(int x, int y) {
+        this.getChildren().remove(buttonList[x][y]);
+        buttonList[x][y] = new TouchedDecoratorButton(buttonList[x][y]);
+        buttonList[x][y].setPrefSize(WIDHT/NB_ROW, WIDHT/NB_COLUMN);
+
+        this.add(buttonList[x][y], y + 1, x + 1);
+    }
+
+    public abstract void configureButtons(GrilleMdl grille);
+
+
 }

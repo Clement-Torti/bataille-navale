@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import sample.launcher.Main;
+import sample.model.Difficulty;
+import sample.model.Partie;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +27,10 @@ public class AccueilController extends BaseController {
 
     @FXML
     private void start(ActionEvent actionEvent) throws Exception {
-        changeStage(BATAILLE_FXML, new BatailleController(getStage()));
+        // Create the game
+        Partie game = new Partie(Difficulty.EASY);
+        setCurrGame(game);
+        changeStage(BATAILLE_FXML, new BatailleController(getStage(), getCurrGame()));
     }
 
     @FXML

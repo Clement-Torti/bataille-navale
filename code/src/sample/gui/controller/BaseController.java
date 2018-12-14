@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.launcher.Main;
+import sample.model.Partie;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,9 +15,15 @@ import static sample.launcher.Main.WIN_WIDTH;
 
 public abstract class BaseController {
     private Stage stage;
+    private Partie currGame;
 
     public BaseController(Stage stage) {
+        this(stage, null);
+    }
+
+    public BaseController(Stage stage, Partie game) {
         this.stage = stage;
+        this.currGame = game;
     }
 
     protected Stage getStage() {
@@ -46,5 +53,13 @@ public abstract class BaseController {
         newStage.setScene(new Scene(root, width, height));
         newStage.showAndWait();
 
+    }
+
+    protected Partie getCurrGame() {
+        return currGame;
+    }
+
+    protected void setCurrGame(Partie game) {
+        currGame = game;
     }
 }

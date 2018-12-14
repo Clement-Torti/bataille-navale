@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.launcher.Main;
+import sample.model.Partie;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +21,9 @@ public class PauseController extends BaseController {
     public PauseController(Stage stage) {
         super(stage);
     }
+    public PauseController(Stage stage, Partie game) {
+        super(stage, game);
+    }
 
 
     // Call when View elements are initialized
@@ -30,7 +34,7 @@ public class PauseController extends BaseController {
 
     @FXML
     private void resume(ActionEvent actionEvent) throws IOException {
-        changeStage(BATAILLE_FXML, new BatailleController(getStage()));
+        changeStage(BATAILLE_FXML, new BatailleController(getStage(), getCurrGame()));
     }
 
     @FXML

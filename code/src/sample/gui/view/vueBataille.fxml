@@ -39,8 +39,8 @@
                 <BorderPane.margin>
                     <Insets top="100" bottom="100"/>
                 </BorderPane.margin>
-                <IAGrid/>
-                <PlayerGrid>
+                <IAGrid fx:id="iaGrid"/>
+                <PlayerGrid fx:id="playerGrid">
                     <padding>
                         <Insets left="100"/>
                     </padding>
