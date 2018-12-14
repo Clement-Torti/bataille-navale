@@ -18,8 +18,12 @@
             xmlns:fx="http://javafx.com/fxml">
 
     <top>
-        <HBox alignment="CENTER" fillHeight="true">
-            <Label text="0:00" fx:id="chrono" HBox.hgrow="ALWAYS" maxWidth="-Infinity"/>
+        <HBox alignment="CENTER">
+            <Label fx:id="chrono" text="00:00:00">
+                <HBox.margin>
+                    <Insets right="10"/>
+                </HBox.margin>
+            </Label>
             <Button text="Pause" onAction="#pause"/>
         </HBox>
     </top>
@@ -28,7 +32,7 @@
 
     <left>
         <ScrollPane>
-            <Label text="Message IA" fx:id="labelIA"/>
+            <Label fx:id="labelIA" text="Message IA"/>
         </ScrollPane>
     </left>
 
@@ -53,7 +57,7 @@
 
     <right>
         <ScrollPane>
-            <Label text="Message joueur" fx:id="labelJoueur"/>
+            <Label fx:id="labelJoueur" text="Message joueur"/>
         </ScrollPane>
     </right>
 
@@ -62,15 +66,18 @@
     <bottom>
         <HBox alignment="CENTER">
             <BorderPane.margin>
-                <Insets top="20" bottom="20"/>
+                <Insets bottom="60"/>
             </BorderPane.margin>
-            <BoatsBox/>
+
+            <BoatsBox>
+                <HBox.margin>
+                    <Insets right="200"/>
+                </HBox.margin>
+            </BoatsBox>
             <BoatsBox/>
 
         </HBox>
     </bottom>
-
-
 
 
 

@@ -9,13 +9,36 @@
 <?import sample.gui.view.TableauScore?>
 
 
+<?import javafx.scene.control.RadioButton?>
 <VBox xmlns:fx="http://javafx.com/fxml" alignment="center" spacing="10">
     <Button text="Start" onAction="#start"/>
+
+
+
+    <HBox fx:id="ensembleBouton" alignment="CENTER" >
+        <RadioButton fx:id="boutonFacile" text="Facile">
+            <HBox.margin>
+                <Insets right="50" top="20" bottom="20"/>
+            </HBox.margin>
+        </RadioButton>
+        <RadioButton fx:id="boutonNormal" text="Normal" selected="true">
+            <HBox.margin>
+                <Insets top="20" bottom="20"/>
+            </HBox.margin>
+        </RadioButton>
+        <RadioButton fx:id="boutonDifficile" text="Difficile">
+            <HBox.margin>
+                <Insets left="50" top="20" bottom="20"/>
+            </HBox.margin>
+        </RadioButton>
+    </HBox>
+
+
     <Button text="Infos" onAction="#infos"/>
 
     <TableauScore style="-fx-background-color: #336699;">
         <VBox.margin>
-            <Insets top="10" left="100" right="100"/>
+            <Insets top="50" left="100" right="100"/>
         </VBox.margin>
     </TableauScore>
 </VBox>
