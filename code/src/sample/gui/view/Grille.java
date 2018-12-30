@@ -5,18 +5,27 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
+import sample.gui.controller.BaseController;
+import sample.gui.controller.BatailleController;
 import sample.gui.view.DecoratorButton.CaseButton;
+import sample.gui.view.DecoratorButton.ChoseDecoratorButton;
+import sample.gui.view.DecoratorButton.KillDecoratorButton;
 import sample.gui.view.DecoratorButton.TouchedDecoratorButton;
 import sample.model.GrilleMdl;
+import sample.model.Observer.IObserver;
+import sample.model.Observer.Subject;
 import sample.model.Point;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public abstract class Grille extends GridPane {
+public abstract class Grille extends GridPane implements IObserver {
     protected final int NB_ROW = 11;
     protected final int NB_COLUMN = 11;
-    private final int WIDHT = 600;
-    private final int HEIGHT = 600;
+    protected final int WIDHT = 600;
+    protected final int HEIGHT = 600;
+
+    protected Subject subject;
 
     // List des button de la grille
     protected CaseButton[][] buttonList = new CaseButton[10][10];
@@ -27,7 +36,6 @@ public abstract class Grille extends GridPane {
         // Création de toutes les colonnes
         for(int i=0; i<NB_COLUMN; i++) {
             ColumnConstraints col = new ColumnConstraints(20, WIDHT / NB_COLUMN, 100);
-
             this.getColumnConstraints().add(col);
         }
 
@@ -59,7 +67,7 @@ public abstract class Grille extends GridPane {
                 buttonList[i][j] = configureStandardButton(i, j);
 
                 buttonList[i][j].setPrefSize(WIDHT/NB_ROW, WIDHT/NB_COLUMN);
-                this.add(buttonList[i][j], j + 1, i + 1);
+                this.add(buttonList[i][j], i + 1, j + 1);
 
             }
         }
@@ -67,15 +75,49 @@ public abstract class Grille extends GridPane {
 
     protected abstract CaseButton configureStandardButton(int x, int y);
 
-    protected void buttonClicked(int x, int y) {
-        this.getChildren().remove(buttonList[x][y]);
-        buttonList[x][y] = new TouchedDecoratorButton(buttonList[x][y]);
-        buttonList[x][y].setPrefSize(WIDHT/NB_ROW, WIDHT/NB_COLUMN);
-
-        this.add(buttonList[x][y], y + 1, x + 1);
-    }
-
     public abstract void configureButtons(GrilleMdl grille);
 
+    public void setSubject(Subject s) {
+        this.subject = s;
+    }
 
+    @Override
+    public void update() {
+        Point p = subject.getCoordinate();
+        CaseButton oldBtn = buttonList[p.x][p.y];
+        CaseButton newBtn;
+
+        switch(subject.getState()) {
+            case -1:
+                return;
+            case 0:
+                newBtn = new ChoseDecoratorButton(oldBtn);
+                break;
+            case 1:
+                newBtn = new TouchedDecoratorButton(oldBtn);
+                break;
+            case 2:
+                // Récupérer toutes les cases des bateaux
+                List<Point> boat = subject.getBoat(p, !subject.isPlayerTurn());
+
+                for (Point point : boat) {
+                    CaseButton oldB = buttonList[point.x][point.y];
+                    this.getChildren().remove(oldB);
+                    CaseButton newB = new KillDecoratorButton(oldB);
+                    newB.setPrefSize(WIDHT/NB_ROW, WIDHT/NB_COLUMN);
+                    this.add(newB, point.x + 1, point.y + 1);
+                }
+
+                return;
+            default:
+                System.out.println("Erreur lors du clicked button");
+                return;
+        }
+
+
+        this.getChildren().remove(oldBtn);
+        newBtn.setPrefSize(WIDHT/NB_ROW, WIDHT/NB_COLUMN);
+
+        this.add(newBtn, p.x + 1, p.y + 1);
+    }
 }

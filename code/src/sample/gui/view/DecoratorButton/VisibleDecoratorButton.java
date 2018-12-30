@@ -4,18 +4,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
-public class TouchedDecoratorButton extends DecoratorButton {
-    public TouchedDecoratorButton(CaseButton button) {
+public class VisibleDecoratorButton extends DecoratorButton {
+    public VisibleDecoratorButton(CaseButton button) {
         super(button);
     }
 
     @Override
     protected void addIcon() {
         // create the red circle representing a boat
-        Rectangle orangeRect = new Rectangle(ICON_SIZE, ICON_SIZE);
-        orangeRect.setFill(Color.ORANGE);
+        Rectangle blueRect = new Rectangle(ICON_SIZE, ICON_SIZE);
+        blueRect.setFill(Color.BLUE);
 
-        icons.getChildren().add(orangeRect);
+        icons.getChildren().add(blueRect);
 
     }
 }

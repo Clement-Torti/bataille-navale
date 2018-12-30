@@ -1,25 +1,14 @@
 package sample.gui.controller;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import sample.launcher.Main;
 import sample.model.Difficulty;
-import sample.model.Partie;
+import sample.model.Observer.Partie;
 
 import java.io.IOException;
-import java.net.URL;
 
 
 public class AccueilController extends BaseController {

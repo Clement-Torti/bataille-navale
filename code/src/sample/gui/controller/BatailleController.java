@@ -1,19 +1,12 @@
 package sample.gui.controller;
 
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import sample.launcher.Main;
-
-import java.net.URL;
-import java.time.chrono.ChronoPeriod;
-import java.time.chrono.ChronoZonedDateTime;
-import java.util.concurrent.TimeUnit;
+import sample.gui.view.Grille;
+import sample.model.Observer.Partie;
 
 
 public class BatailleController extends BaseController {
@@ -21,6 +14,10 @@ public class BatailleController extends BaseController {
     Grille iaGrid;
     @FXML
     Grille playerGrid;
+    @FXML
+    ListView iaMessage;
+    @FXML
+    ListView playerMessage;
 
     private static final String PAUSE_FXML = "../view/vuePause.fxml";
 
@@ -40,9 +37,21 @@ public class BatailleController extends BaseController {
     // Call when View elements are initialized
     @FXML
     private void initialize() {
-	//iaGrid.configureButtons(getCurrGame().getIaGrid());
-        
-	creerChrono();
+        // Configure grids
+	    iaGrid.configureButtons(getCurrGame().getIaGrid());
+	    playerGrid.configureButtons(getCurrGame().getPlayerGrid());
+
+	    // Initialize les connections entre notifieurs et notifiés
+        getCurrGame().attach(iaGrid);
+        getCurrGame().attach(playerGrid);
+        iaGrid.setSubject(getCurrGame());
+        playerGrid.setSubject(getCurrGame());
+
+        // Bind les messages à la list de Partie
+        iaMessage.setItems(getCurrGame().getIaMessage());
+        playerMessage.setItems(getCurrGame().getPlayerMessage());
+
+	    //creerChrono();
     }
 
     private void creerChrono() {
@@ -93,4 +102,5 @@ public class BatailleController extends BaseController {
     private void pause(ActionEvent actionEvent) throws Exception {
         changeStage(PAUSE_FXML, new PauseController(getStage(), getCurrGame()));
     }
+
 }

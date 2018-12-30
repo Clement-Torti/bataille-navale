@@ -31,9 +31,7 @@
 
 
     <left>
-        <ScrollPane>
-            <Label fx:id="labelIA" text="Message IA"/>
-        </ScrollPane>
+        <ListView fx:id="playerMessage" prefWidth="110" minWidth="80"/>
     </left>
 
 
@@ -41,14 +39,25 @@
     <center>
             <HBox alignment="CENTER">
                 <BorderPane.margin>
-                    <Insets top="100" bottom="100"/>
+                    <Insets top="50" bottom="50"/>
                 </BorderPane.margin>
-                <IAGrid fx:id="iaGrid"/>
-                <PlayerGrid fx:id="playerGrid">
-                    <padding>
-                        <Insets left="100"/>
-                    </padding>
-                </PlayerGrid>
+                <VBox alignment="CENTER">
+                    <IAGrid fx:id="iaGrid">
+                        <padding>
+                            <Insets left="20" bottom="20"/>
+                        </padding>
+                    </IAGrid>
+                    <Label text="Grille IA"/>
+                </VBox>
+                <VBox alignment="CENTER">
+                    <PlayerGrid fx:id="playerGrid">
+                        <padding>
+                            <Insets left="20" right="20" bottom="20"/>
+                        </padding>
+                    </PlayerGrid>
+                    <Label text="Grille Joueur"/>
+                </VBox>
+
             </HBox>
 
     </center>
@@ -56,9 +65,7 @@
 
 
     <right>
-        <ScrollPane>
-            <Label fx:id="labelJoueur" text="Message joueur"/>
-        </ScrollPane>
+        <ListView fx:id="iaMessage" prefWidth="110" minWidth="80" />
     </right>
 
 

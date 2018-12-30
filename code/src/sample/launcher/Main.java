@@ -12,8 +12,8 @@ import java.util.ResourceBundle;
 
 public class Main extends Application {
 
-    public static final int WIN_WIDTH = 1334;
-    public static final int WIN_HEIGHT = 780;
+    public static final int WIN_WIDTH = 1000;
+    public static final int WIN_HEIGHT = 600;
     private static final String ACCUEIL_FXML = "../gui/view/vueAccueil.fxml";
 
 
