@@ -4,7 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-
+import sample.model.Observer.IObserver;
 
 
 public class BoatsBox extends HBox {

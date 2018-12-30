@@ -3,6 +3,7 @@ package sample.gui.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import sample.model.Difficulty;
@@ -23,6 +24,8 @@ public class AccueilController extends BaseController {
     @FXML
     private RadioButton boutonDifficile;
 
+    ToggleGroup group = new ToggleGroup();
+
 
 
     public AccueilController(Stage stage) {
@@ -33,7 +36,6 @@ public class AccueilController extends BaseController {
     private void initialize()
     {
         // Permet de créer un groupe de RadioButton et donc il n'y a qu'un RadioButton qui peut être coché
-        ToggleGroup group = new ToggleGroup();
         boutonFacile.setToggleGroup(group);
         boutonNormal.setToggleGroup(group);
         boutonDifficile.setToggleGroup(group);
@@ -42,8 +44,17 @@ public class AccueilController extends BaseController {
 
     @FXML
     private void start(ActionEvent actionEvent) throws Exception {
+        Partie game;
+
         // Create the game
-        Partie game = new Partie(Difficulty.EASY);
+        if(group.getSelectedToggle().equals(boutonFacile)) {
+            game = new Partie(Difficulty.EASY);
+        } else if(group.getSelectedToggle().equals(boutonNormal)) {
+            game = new Partie(Difficulty.MEDIUM);
+        } else {
+            game = new Partie(Difficulty.HARD);
+        }
+
         setCurrGame(game);
         changeStage(BATAILLE_FXML, new BatailleController(getStage(), getCurrGame()));
     }

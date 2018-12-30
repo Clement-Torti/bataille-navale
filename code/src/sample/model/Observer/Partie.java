@@ -11,6 +11,10 @@ import sample.model.Point;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 public class Partie extends Subject {
     private int duree;
@@ -55,19 +59,75 @@ public class Partie extends Subject {
     }
 
     private List<ArrayList<Point>> generateRandomPos() {
+        // 5 bateaux au total
+        // 1 porte avion (5 cases)
+        // 1 croiseur (4 cases)
+        // 1 contre torpilleur (3 cases)
+        // 1 sous-marin (3 cases)
+        // 1 torpilleur (2 cases)
+        Random r = new Random();
         List<ArrayList<Point>> boats = new ArrayList<ArrayList<Point>>();
+        List<Point> chosedPoints = new ArrayList<>();
+        int[] boatsSize = {5, 4, 3, 3, 2};
 
-        ArrayList<Point> boat1 = new ArrayList<Point>();
-        boat1.add(new Point(0, 0));
-        boat1.add(new Point(1, 0));
+        // Pour tous les tableaux
+        for(int size: boatsSize) {
+            // Création du bateau
+            ArrayList<Point> porteAvion = new ArrayList<>();
 
-        ArrayList<Point> boat2 = new ArrayList<Point>();
-        boat2.add(new Point(0, 2));
-        boat2.add(new Point(1, 2));
-        boat2.add(new Point(2, 2));
+            // Choix d'un premier point valide
+            Point p = new Point(r.nextInt(10), r.nextInt(10));
+            while(chosedPoints.contains(p)) { p = new Point(r.nextInt(10), r.nextInt(10)); }
+            chosedPoints.add(p);
+            porteAvion.add(p);
 
-        boats.add(boat1);
-        boats.add(boat2);
+            // Choix de l'orientation
+            boolean vertical = r.nextBoolean();
+            int leftDownOffset = 1;
+
+            for(int i=1; i<size; i++) {
+                if(vertical) {
+                    if(!chosedPoints.contains(new Point(p.x, min(p.y+i, 9)))) {
+                        Point newP = new Point(p.x, min(p.y+i, 9));
+                        chosedPoints.add(newP);
+                        porteAvion.add(newP);
+                        continue;
+                    }
+
+                    if(!chosedPoints.contains(new Point(p.x, max(p.y-leftDownOffset, 0)))) {
+                        Point newP = new Point(p.x, max(p.y-leftDownOffset, 0));
+                        leftDownOffset++;
+                        chosedPoints.add(newP);
+                        porteAvion.add(newP);
+                        continue;
+                    }
+
+                    break;
+
+                } else {
+                    if(!chosedPoints.contains(new Point(min(p.x+i, 9), p.y))) {
+                        Point newP = new Point(min(p.x+i, 9), p.y);
+                        chosedPoints.add(newP);
+                        porteAvion.add(newP);
+                        continue;
+                    }
+
+                    if(!chosedPoints.contains(new Point(max(p.x-leftDownOffset, 0), p.y))) {
+                        Point newP = new Point(max(p.x-leftDownOffset, 0), p.y);
+                        chosedPoints.add(newP);
+                        porteAvion.add(newP);
+                        leftDownOffset++;
+                        continue;
+                    }
+
+                    break;
+
+                }
+            }
+
+            boats.add(porteAvion);
+        }
+
 
         return boats;
     }
