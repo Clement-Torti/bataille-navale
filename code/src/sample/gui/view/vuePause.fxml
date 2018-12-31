@@ -12,12 +12,12 @@
             prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #336699;">
 
     <VBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" style="-fx-background-color: #336700;" minHeight="100" minWidth="100" alignment="CENTER">
-        <Button text="Retour" onAction="#resume" textAlignment="LEFT">
+        <Button text="Retour" onAction="#resume" textAlignment="LEFT" focusTraversable="false">
             <VBox.margin>
                 <Insets bottom="40"/>
             </VBox.margin>
         </Button>
-        <Button text="Quitter" onAction="#quit"/>
+        <Button text="Quitter" onAction="#quit" focusTraversable="false"/>
     </VBox>
 
 
