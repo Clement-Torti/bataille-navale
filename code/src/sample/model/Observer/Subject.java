@@ -20,6 +20,7 @@ public abstract class Subject {
     }
 
     public void notifier() {
+        System.out.println("call notifier");
         for (IObserver o: observers) {
             o.update();
         }

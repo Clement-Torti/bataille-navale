@@ -6,11 +6,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import sample.model.Observer.IObserver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class BoatsBox extends HBox {
     public final int NB_BOATS = 5;
-    public final int BOAT_WIDTH = 50;
-    public final int BOAT_HEIGHT = 50;
+    public final int BOAT_WIDTH = 40;
+    public final int BOAT_HEIGHT = 40;
+
+    private List<ImageView> imageViewList = new ArrayList<>();
+    int nbDestroyedBoat = 0;
 
     public BoatsBox() {
         super();
@@ -27,8 +33,17 @@ public class BoatsBox extends HBox {
             imageV.setFitWidth(BOAT_WIDTH);
             imageV.setFitHeight(BOAT_HEIGHT);
 
+            imageViewList.add(imageV);
             this.getChildren().add(imageV);
         }
+    }
+
+    public void destroyBoat() {
+        // Il ne reste aucun bateau
+        if(nbDestroyedBoat == NB_BOATS) return;
+
+        imageViewList.get(nbDestroyedBoat).setImage(new Image("/images/destroyBoat.png"));
+        nbDestroyedBoat++;
     }
 
 }

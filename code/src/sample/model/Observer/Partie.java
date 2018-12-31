@@ -19,7 +19,7 @@ import static java.lang.Math.min;
 public class Partie extends Subject {
     private int duree;
     private int nbCoup;
-    private int winner;
+    private int winner = -1;
 
     private GrilleMdl iaGrid;
     private GrilleMdl playerGrid;
@@ -71,7 +71,9 @@ public class Partie extends Subject {
         int[] boatsSize = {5, 4, 3, 3, 2};
 
         // Pour tous les tableaux
-        for(int size: boatsSize) {
+        for(int j=0; j<boatsSize.length; j++) {
+            int size = boatsSize[j];
+
             // Création du bateau
             ArrayList<Point> porteAvion = new ArrayList<>();
 
@@ -83,9 +85,12 @@ public class Partie extends Subject {
 
             // Choix de l'orientation
             boolean vertical = r.nextBoolean();
-            int leftDownOffset = 1;
 
-            for(int i=1; i<size; i++) {
+            int leftDownOffset = 1;
+            // Conserve le nombre de case ayant pu etre créer pour un bateau
+            int i;
+
+            for(i=1; i<size; i++) {
                 if(vertical) {
                     if(!chosedPoints.contains(new Point(p.x, min(p.y+i, 9)))) {
                         Point newP = new Point(p.x, min(p.y+i, 9));
@@ -125,7 +130,14 @@ public class Partie extends Subject {
                 }
             }
 
-            boats.add(porteAvion);
+            // Le bateau n'a pas pu être créer correctement
+            if(i != size) {
+                // On recommence
+                j--;
+            } else {
+                boats.add(porteAvion);
+            }
+
         }
 
 
@@ -142,6 +154,8 @@ public class Partie extends Subject {
 
     @Override
     public void updatePartie(int x, int y) {
+        // Vérifier que la partie n'est pas fini
+        if(winner != -1) { return; }
 
         this.coordinate = new Point(x, y);
 
@@ -158,7 +172,6 @@ public class Partie extends Subject {
             // Vérifier si c'est gagné
             if(iaGrid.isWin()) {
                 winner = 0;
-                stopPartie();
             }
 
         } else {
@@ -170,7 +183,6 @@ public class Partie extends Subject {
             // Vérifier si c'est gagné
             if(playerGrid.isWin()) {
                 winner = 1;
-                stopPartie();
             }
         }
 
@@ -186,10 +198,6 @@ public class Partie extends Subject {
             updatePartie(p.x, p.y);
         }
 
-    }
-
-    private void stopPartie() {
-        System.out.println("partie terminer");
     }
 
     @Override
@@ -228,5 +236,10 @@ public class Partie extends Subject {
         }
     }
 
+    public void addOneSec() { this.duree++; }
+
+    public int getWinner() { return winner; }
+    public int getDuree() { return duree; }
+    public int getNbCoup() { return nbCoup; }
 
 }

@@ -76,12 +76,12 @@
                 <Insets bottom="60"/>
             </BorderPane.margin>
 
-            <BoatsBox>
+            <BoatsBox fx:id="iaBoatsBox">
                 <HBox.margin>
                     <Insets right="200"/>
                 </HBox.margin>
             </BoatsBox>
-            <BoatsBox/>
+            <BoatsBox fx:id="playerBoatsBox"/>
 
         </HBox>
     </bottom>

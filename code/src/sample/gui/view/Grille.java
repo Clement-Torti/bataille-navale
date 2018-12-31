@@ -15,6 +15,7 @@ import sample.model.GrilleMdl;
 import sample.model.Observer.IObserver;
 import sample.model.Observer.Subject;
 import sample.model.Point;
+import sample.model.Util.SoundBox;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,12 +92,15 @@ public abstract class Grille extends GridPane implements IObserver {
             case -1:
                 return;
             case 0:
+                SoundBox.playDiscoverSound();
                 newBtn = new ChoseDecoratorButton(oldBtn);
                 break;
             case 1:
+                SoundBox.playTouchedSound();
                 newBtn = new TouchedDecoratorButton(oldBtn);
                 break;
             case 2:
+                SoundBox.playDestroyedSound();
                 // Récupérer toutes les cases des bateaux
                 List<Point> boat = subject.getBoat(p, !subject.isPlayerTurn());
 
@@ -114,10 +118,10 @@ public abstract class Grille extends GridPane implements IObserver {
                 return;
         }
 
-
         this.getChildren().remove(oldBtn);
         newBtn.setPrefSize(WIDHT/NB_ROW, WIDHT/NB_COLUMN);
 
         this.add(newBtn, p.x + 1, p.y + 1);
+
     }
 }

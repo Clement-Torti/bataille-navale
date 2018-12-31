@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.Border?>
-<?import sample.gui.view.TableauScore?>
 
 
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ListView?>
 <VBox xmlns:fx="http://javafx.com/fxml" alignment="center" spacing="10">
     <Button text="Start" onAction="#start"/>
 
@@ -36,9 +36,5 @@
 
     <Button text="Infos" onAction="#infos"/>
 
-    <TableauScore style="-fx-background-color: #336699;">
-        <VBox.margin>
-            <Insets top="50" left="100" right="100"/>
-        </VBox.margin>
-    </TableauScore>
+   <ListView fx:id="scoresList" />
 </VBox>

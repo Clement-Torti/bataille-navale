@@ -1,15 +1,24 @@
 package sample.gui.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
+import sample.gui.view.BoatsBox;
 import sample.gui.view.Grille;
+import sample.model.Observer.IObserver;
 import sample.model.Observer.Partie;
+import sample.model.Util.SoundBox;
+
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
-public class BatailleController extends BaseController {
+public class BatailleController extends BaseController implements IObserver {
     @FXML
     Grille iaGrid;
     @FXML
@@ -18,11 +27,17 @@ public class BatailleController extends BaseController {
     ListView iaMessage;
     @FXML
     ListView playerMessage;
-
-    private static final String PAUSE_FXML = "../view/vuePause.fxml";
-
+    @FXML
+    BoatsBox iaBoatsBox;
+    @FXML
+    BoatsBox playerBoatsBox;
     @FXML
     private Label chrono;
+
+    private static final String PAUSE_FXML = "../view/vuePause.fxml";
+    private static final String FIN_FXML = "../view/vueFin.fxml";
+
+    private Timer timer;
 
     // Constructor call before View init
     public BatailleController(Stage stage) {
@@ -37,6 +52,8 @@ public class BatailleController extends BaseController {
     // Call when View elements are initialized
     @FXML
     private void initialize() {
+        SoundBox.playBackgroundMusic();
+
         // Configure grids
 	    iaGrid.configureButtons(getCurrGame().getIaGrid());
 	    playerGrid.configureButtons(getCurrGame().getPlayerGrid());
@@ -44,63 +61,74 @@ public class BatailleController extends BaseController {
 	    // Initialize les connections entre notifieurs et notifiés
         getCurrGame().attach(iaGrid);
         getCurrGame().attach(playerGrid);
+        getCurrGame().attach(this);
         iaGrid.setSubject(getCurrGame());
         playerGrid.setSubject(getCurrGame());
+
 
         // Bind les messages à la list de Partie
         iaMessage.setItems(getCurrGame().getIaMessage());
         playerMessage.setItems(getCurrGame().getPlayerMessage());
 
-	    //creerChrono();
-    }
+        // Initialisation du timer
+        timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                getCurrGame().addOneSec();
 
-    private void creerChrono() {
-        int minutes = 0;
-        int secondes = 0;
-        int heures = 0;
-        int j = 0;
+                Runnable run = new Runnable() {
+                    @Override
+                    public void run() {
+                        String duree = getCurrGame().getDuree() + " sec.";
+                        chrono.setText(duree);
+                    }
+                };
 
-        while (j<10)
-        {
-            for(int i = 0; i<60; i++)
-            {
-                secondes++;
-                if(secondes == 60)
-                {
-                    minutes++;
-                    secondes = 0;
-                }
-                if(minutes == 60)
-                {
-                    heures++;
-                    minutes = 0;
-                }
-
-                if(secondes < 10)
-                {
-                    chrono.setText(heures + ":" + minutes + ":0" + secondes);
-                }
-                else{
-                    chrono.setText(heures + ":" + minutes + ":" + secondes);
-                }
-
-                if(minutes < 10)
-                {
-                    chrono.setText(heures + ":0" + minutes + ":" + secondes);
-                }
-                else{
-                    chrono.setText(heures + ":" + minutes + ":" + secondes);
-                }
+                Platform.runLater(run);
 
             }
-
-            j++;
-        }
+        };
+        timer.scheduleAtFixedRate(task, 0l, 1000l);
     }
+
 
     @FXML
     private void pause(ActionEvent actionEvent) throws Exception {
+        // Arret du timer
+        timer.cancel();
+
         changeStage(PAUSE_FXML, new PauseController(getStage(), getCurrGame()));
     }
+
+    private void finish() {
+        // Arret du timer
+        timer.cancel();
+
+        try {
+            changeStage(FIN_FXML, new FinController(getStage(), getCurrGame()));
+        } catch(IOException exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    @Override
+    public void update(){
+        // Vérifie si la partie est fini
+        if(getCurrGame().getWinner() != -1) {
+            finish();
+        }
+
+        // Verifie si un bateau est détruit
+        if(getCurrGame().getState()!=2) return;
+
+        // Met à jour la bonne boatsBox
+        if(getCurrGame().isPlayerTurn()) {
+            iaBoatsBox.destroyBoat();
+        } else {
+            playerBoatsBox.destroyBoat();
+        }
+    }
+
 
 }
