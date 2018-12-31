@@ -24,14 +24,14 @@
                     <Insets right="10"/>
                 </HBox.margin>
             </Label>
-            <Button text="Pause" onAction="#pause"/>
+            <Button text="Pause" onAction="#pause" focusTraversable="false"/>
         </HBox>
     </top>
 
 
 
     <left>
-        <ListView fx:id="playerMessage" prefWidth="120" minWidth="110"/>
+        <ListView fx:id="playerMessage" prefWidth="120" minWidth="110" focusTraversable="false"/>
     </left>
 
 
@@ -65,7 +65,7 @@
 
 
     <right>
-        <ListView fx:id="iaMessage" prefWidth="120" minWidth="110" />
+        <ListView fx:id="iaMessage" prefWidth="120" minWidth="110" focusTraversable="false"/>
     </right>
 
 
@@ -78,7 +78,7 @@
 
             <BoatsBox>
                 <HBox.margin>
-                    <Insets right="200"/>
+                    <Insets right="0"/>
                 </HBox.margin>
             </BoatsBox>
             <BoatsBox/>

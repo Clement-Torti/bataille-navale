@@ -11,22 +11,22 @@
 
 <?import javafx.scene.control.RadioButton?>
 <VBox xmlns:fx="http://javafx.com/fxml" alignment="center" spacing="10">
-    <Button text="Start" onAction="#start"/>
+    <Button text="Start" onAction="#start" focusTraversable="false"/>
 
 
 
-    <HBox fx:id="ensembleBouton" alignment="CENTER" >
-        <RadioButton fx:id="boutonFacile" text="Facile">
+    <HBox fx:id="ensembleBouton" alignment="CENTER">
+        <RadioButton fx:id="boutonFacile" text="Facile" focusTraversable="false">
             <HBox.margin>
                 <Insets right="50" top="20" bottom="20"/>
             </HBox.margin>
         </RadioButton>
-        <RadioButton fx:id="boutonNormal" text="Normal" selected="true">
+        <RadioButton fx:id="boutonNormal" text="Normal" selected="true" focusTraversable="false">
             <HBox.margin>
                 <Insets top="20" bottom="20"/>
             </HBox.margin>
         </RadioButton>
-        <RadioButton fx:id="boutonDifficile" text="Difficile">
+        <RadioButton fx:id="boutonDifficile" text="Difficile" focusTraversable="false">
             <HBox.margin>
                 <Insets left="50" top="20" bottom="20"/>
             </HBox.margin>
@@ -34,7 +34,7 @@
     </HBox>
 
 
-    <Button text="Infos" onAction="#infos"/>
+    <Button text="Infos" onAction="#infos" focusTraversable="false"/>
 
     <TableauScore style="-fx-background-color: #336699;">
         <VBox.margin>
