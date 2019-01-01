@@ -32,13 +32,13 @@ public class PauseController extends BaseController {
     private void resume(ActionEvent actionEvent) throws IOException {
         SoundBox.stopBackgroundMusic();
         SoundBox.playButtonClickSound();
-        changeStage(BATAILLE_FXML, new BatailleController(getStage(), getCurrGame()));
+        changeScene(BATAILLE_FXML, new BatailleController(getStage(), getCurrGame()));
     }
 
     @FXML
     private void quit(ActionEvent actionEvent) throws Exception {
         SoundBox.stopBackgroundMusic();
         SoundBox.playButtonClickSound();
-        changeStage(ACCUEIL_FXML, new AccueilController(getStage()));
+        changeScene(ACCUEIL_FXML, new AccueilController(getStage()));
     }
 }

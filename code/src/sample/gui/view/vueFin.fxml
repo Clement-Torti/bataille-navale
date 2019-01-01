@@ -24,7 +24,7 @@
         </ImageView>
 
 
-        <TextArea fx:id="text" id="labelInfo" maxWidth="500" />
+        <TextArea fx:id="text" id="labelInfo" maxWidth="500" focusTraversable="false"/>
         <TextField fx:id="name" promptText="Entrez votre nom" maxWidth="300" focusTraversable="false"/>
-        <Button text="Retour à l'accueil" onAction="#accueil" minWidth="150"/>
+        <Button text="Retour à l'accueil" onAction="#accueil" minWidth="150" focusTraversable="false"/>
     </VBox>

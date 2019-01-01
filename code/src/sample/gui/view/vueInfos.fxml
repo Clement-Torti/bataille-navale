@@ -6,11 +6,61 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import com.sun.javafx.scene.control.skin.SplitPaneSkin.Content?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: #777777;">
 
-    <HBox>
+    <VBox>
         <Label>Coucou</Label>
-    </HBox>
+        <Label>Ne pas mettre de bouton pour fermer la fenêtre. On fermera avec la croix.</Label>
+
+        <HBox>
+            <Label>Le nombre de bateaux non coulés</Label>
+            <ImageView>
+                <image>
+                    <Image url="/images/boat.png" requestedHeight="50" requestedWidth="50" preserveRatio="true"/>
+                </image>
+            </ImageView>
+        </HBox>
+
+        <HBox>
+            <Label>Partie d'un bateau non touché sur la grille de jeu</Label>
+            <ImageView>
+                <image>
+                    <Image url="/images/boatIcon.png" requestedHeight="50" requestedWidth="50" preserveRatio="true"/>
+                </image>
+            </ImageView>
+        </HBox>
+
+        <HBox>
+            <Label>Le nombre de bateaux coulés</Label>
+            <ImageView>
+                <image>
+                    <Image url="/images/destroyBoat.png" requestedHeight="50" requestedWidth="50" preserveRatio="true"/>
+                </image>
+            </ImageView>
+        </HBox>
+
+        <HBox>
+            <Label>Bateaux coulés sur la grille de jeu</Label>
+            <ImageView>
+                <image>
+                    <Image url="/images/explosionIcon.gif" requestedHeight="50" requestedWidth="50" preserveRatio="true"/>
+                </image>
+            </ImageView>
+        </HBox>
+
+        <HBox>
+            <Label>Partie d'un bateau touché sur la grille de jeu</Label>
+            <ImageView>
+                <image>
+                    <Image url="/images/touchedBoatIcon.png" requestedHeight="50" requestedWidth="50" preserveRatio="true"/>
+                </image>
+            </ImageView>
+        </HBox>
+
+    </VBox>
 
 </AnchorPane>

@@ -4,6 +4,13 @@
 4//Hervé//60 sec//32
 5//Vernon//31 sec//38
 6//Big D//37 sec//38
-7//Le Boss//0 sec//45
-8//Jack//139 sec//50
-9//Noé//1024 sec//128
+7//Florent//33 sec//43
+8//Le Boss//0 sec//45
+9//Florent//49 sec//49
+10//Jack//139 sec//50
+11//Florent//46 sec//52
+12//Florent//100 sec//55
+13//Florent//55 sec//56
+14//Florent//52 sec//63
+15//Florent//114 sec//76
+16//Noé//1024 sec//128

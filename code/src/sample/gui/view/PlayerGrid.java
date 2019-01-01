@@ -23,7 +23,7 @@ public class PlayerGrid extends Grille {
 
     @Override
     public void configureButtons(GrilleMdl grille) {
-        // Faire tous les bateau
+        // Faire tous les bateaux
         for (List<Point> boat: grille.getBoats()) {
             for (Point p: boat) {
                 this.getChildren().remove(buttonList[p.x][p.y]);

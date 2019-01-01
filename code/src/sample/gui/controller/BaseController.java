@@ -29,7 +29,7 @@ public abstract class BaseController {
         return stage;
     }
 
-    public void changeStage(String source, BaseController destController) throws IOException {
+    public void changeScene(String source, BaseController destController) throws IOException {
         URL url = getClass().getResource(source);
         FXMLLoader loader = new FXMLLoader(url);
 

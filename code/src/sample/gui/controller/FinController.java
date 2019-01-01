@@ -2,7 +2,6 @@ package sample.gui.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -49,6 +48,8 @@ public class FinController extends BaseController {
     @FXML
     private void accueil(ActionEvent actionEvent) throws Exception {
         SoundBox.playButtonClickSound();
+        SoundBox.stopBackgroundMusic();
+        SoundBox.playAccueilMusic();
 
         if(getCurrGame().getWinner() == 0 &&  name.getText().isEmpty()) { return; }
 
@@ -61,6 +62,6 @@ public class FinController extends BaseController {
             writer.insertScore(score);
         }
 
-        changeStage(ACCUEIL_FXML, new AccueilController(getStage()));
+        changeScene(ACCUEIL_FXML, new AccueilController(getStage()));
     }
 }

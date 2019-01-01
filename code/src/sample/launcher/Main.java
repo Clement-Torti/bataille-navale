@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import sample.gui.controller.AccueilController;
 
@@ -26,8 +27,9 @@ public class Main extends Application {
         loader.setController(new AccueilController(primaryStage));
         Parent root = loader.load();
 
-        primaryStage.setTitle("Accueil");
+        primaryStage.setTitle("Bataille Navale");
         primaryStage.setScene(new Scene(root, WIN_WIDTH, WIN_HEIGHT));
+        //primaryStage.getIcons().setAll(new Image(getClass().getResource("images/logo.png").toExternalForm()));
         primaryStage.show();
     }
 

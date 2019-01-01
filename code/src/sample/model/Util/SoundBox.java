@@ -30,6 +30,7 @@ public class SoundBox {
         Media sound = new Media(f.toURI().toString());
 
         bruitagePlayer = new MediaPlayer(sound);
+        bruitagePlayer.setVolume(0.15);
         bruitagePlayer.play();
 
     }

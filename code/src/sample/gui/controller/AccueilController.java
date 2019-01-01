@@ -58,6 +58,7 @@ public class AccueilController extends BaseController {
         for(Score score: scoreReader.getScores()) {
             scores.add(score);
         }
+        // On ajoute à la ListView de la vue, les scores récupérés
         scoresList.setItems(scores);
 
     }
@@ -80,7 +81,7 @@ public class AccueilController extends BaseController {
         }
 
         setCurrGame(game);
-        changeStage(BATAILLE_FXML, new BatailleController(getStage(), getCurrGame()));
+        changeScene(BATAILLE_FXML, new BatailleController(getStage(), getCurrGame()));
 
     }
 

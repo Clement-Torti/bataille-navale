@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import sample.gui.view.BoatsBox;
 import sample.gui.view.Grille;
@@ -102,7 +101,7 @@ public class BatailleController extends BaseController implements IObserver {
         SoundBox.stopBackgroundMusic();
         SoundBox.playButtonClickSound();
 
-        changeStage(PAUSE_FXML, new PauseController(getStage(), getCurrGame()));
+        changeScene(PAUSE_FXML, new PauseController(getStage(), getCurrGame()));
     }
 
     private void finish() {
@@ -110,7 +109,7 @@ public class BatailleController extends BaseController implements IObserver {
         timer.cancel();
 
         try {
-            changeStage(FIN_FXML, new FinController(getStage(), getCurrGame()));
+            changeScene(FIN_FXML, new FinController(getStage(), getCurrGame()));
         } catch(IOException exception) {
             System.out.println(exception.getMessage());
         }

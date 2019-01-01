@@ -30,6 +30,7 @@ public class ScoreReader {
 
             String line;
 
+            // Tant que l'on peut lire une ligne
             while((line = br.readLine()) != null) {
                 scores.add(format(line));
             }
