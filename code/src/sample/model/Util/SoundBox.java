@@ -22,7 +22,7 @@ public class SoundBox {
     }
 
     public static void playButtonClickSound() {
-
+        playBruitage("resources/audio/bipSound.wav");
     }
 
     private static void playBruitage(String musicFile) {
@@ -34,9 +34,8 @@ public class SoundBox {
 
     }
 
-    public static void playBackgroundMusic() {
+    private static void playBackgroundMusic(String musicFile) {
         if(backgroundPlayer != null) { return; }
-        String musicFile = "resources/audio/backgroundMusic.wav";
         File f = new File(musicFile);
 
         Media sound = new Media(f.toURI().toString());
@@ -46,6 +45,19 @@ public class SoundBox {
         backgroundPlayer.setVolume(0.3);
         backgroundPlayer.play();
 
+    }
+
+    public static void playAccueilMusic() {
+        playBackgroundMusic("resources/audio/accueilMusic.wav");
+    }
+
+    public static void playGameMusic() {
+        playBackgroundMusic("resources/audio/backgroundMusic.wav");
+    }
+
+    public static void stopBackgroundMusic() {
+        backgroundPlayer.stop();
+        backgroundPlayer = null;
     }
 
 }

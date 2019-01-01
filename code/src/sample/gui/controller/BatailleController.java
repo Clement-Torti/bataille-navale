@@ -52,7 +52,7 @@ public class BatailleController extends BaseController implements IObserver {
     // Call when View elements are initialized
     @FXML
     private void initialize() {
-        SoundBox.playBackgroundMusic();
+        SoundBox.playGameMusic();
 
         // Configure grids
 	    iaGrid.configureButtons(getCurrGame().getIaGrid());
@@ -97,6 +97,10 @@ public class BatailleController extends BaseController implements IObserver {
     private void pause(ActionEvent actionEvent) throws Exception {
         // Arret du timer
         timer.cancel();
+
+        // Arret de la musique
+        SoundBox.stopBackgroundMusic();
+        SoundBox.playButtonClickSound();
 
         changeStage(PAUSE_FXML, new PauseController(getStage(), getCurrGame()));
     }

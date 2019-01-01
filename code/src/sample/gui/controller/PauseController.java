@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import sample.model.Observer.Partie;
+import sample.model.Util.SoundBox;
 
 import java.io.IOException;
 
@@ -24,16 +25,20 @@ public class PauseController extends BaseController {
     // Call when View elements are initialized
     @FXML
     private void initialize() {
-
+        SoundBox.playAccueilMusic();
     }
 
     @FXML
     private void resume(ActionEvent actionEvent) throws IOException {
+        SoundBox.stopBackgroundMusic();
+        SoundBox.playButtonClickSound();
         changeStage(BATAILLE_FXML, new BatailleController(getStage(), getCurrGame()));
     }
 
     @FXML
     private void quit(ActionEvent actionEvent) throws Exception {
+        SoundBox.stopBackgroundMusic();
+        SoundBox.playButtonClickSound();
         changeStage(ACCUEIL_FXML, new AccueilController(getStage()));
     }
 }

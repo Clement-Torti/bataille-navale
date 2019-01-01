@@ -7,17 +7,30 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #336699;">
+            prefHeight="400.0" prefWidth="600.0" stylesheets="/css/vueAccueil.css" id="main">
 
-    <VBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" style="-fx-background-color: #336700;" minHeight="100" minWidth="100" alignment="CENTER">
-        <Button text="Retour" onAction="#resume" textAlignment="LEFT" focusTraversable="false">
+    <VBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"  minHeight="100" minWidth="100" alignment="CENTER">
+
+        <ImageView>
+            <image>
+                <Image url="/images/logo.png" requestedWidth="300" preserveRatio="true"/>
+            </image>
+            <VBox.margin>
+                <Insets bottom="75"/>
+            </VBox.margin>
+        </ImageView>
+
+        <Button text="Retour" onAction="#resume" textAlignment="LEFT" focusTraversable="false" minWidth="150">
             <VBox.margin>
                 <Insets bottom="40"/>
             </VBox.margin>
         </Button>
-        <Button text="Quitter" onAction="#quit" focusTraversable="false"/>
+
+        <Button text="Quitter" onAction="#quit" focusTraversable="false" minWidth="150"/>
     </VBox>
 
 

@@ -6,13 +6,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-    <VBox fx:id="vbox">
-        <Label fx:id="text"/>
-        <TextField fx:id="name" text="Entrez votre nom"/>
-        <Button text="Retour à l'accueil" onAction="#accueil"/>
-    </VBox>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
-</AnchorPane>
+    <VBox fx:id="vbox" spacing="30" alignment="CENTER" xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          prefHeight="400.0" prefWidth="600.0" stylesheets="/css/vueAccueil.css" id="main">
+
+        <ImageView>
+            <image>
+                <Image url="/images/logo.png" requestedWidth="300" preserveRatio="true"/>
+            </image>
+            <VBox.margin>
+                <Insets bottom="75"/>
+            </VBox.margin>
+        </ImageView>
+
+
+        <TextArea fx:id="text" id="labelInfo" maxWidth="500" />
+        <TextField fx:id="name" promptText="Entrez votre nom" maxWidth="300" focusTraversable="false"/>
+        <Button text="Retour à l'accueil" onAction="#accueil" minWidth="150"/>
+    </VBox>

@@ -9,11 +9,12 @@ import javafx.scene.shape.Ellipse;
 
 
 public abstract class CaseButton extends Button {
-    protected final int ICON_SIZE = 10;
+    protected final int ICON_SIZE = 20;
     protected StackPane icons = new StackPane();
 
     public CaseButton() {
         super();
+        setId("caseBtn");
         getChildren().add(icons);
     }
 

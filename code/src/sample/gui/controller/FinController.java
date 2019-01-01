@@ -3,16 +3,18 @@ package sample.gui.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.model.Observer.Partie;
 import sample.model.Score;
 import sample.model.Util.ScoreWriter;
+import sample.model.Util.SoundBox;
 
 public class FinController extends BaseController {
     @FXML
-    Label text;
+    TextArea text;
     @FXML
     TextField name;
     @FXML
@@ -29,9 +31,9 @@ public class FinController extends BaseController {
         String string = "";
 
         if(getCurrGame().getWinner() == 0) {
-            string += "Vous avez gagné!";
+            string += "Vous avez gagné!\n";
         } else {
-            string += "Défaite.";
+            string += "Défaite.\n";
         }
 
         string += "La partie a durée " + getCurrGame().getDuree() + " secondes en " + getCurrGame().getNbCoup() + " coups.";
@@ -46,7 +48,9 @@ public class FinController extends BaseController {
 
     @FXML
     private void accueil(ActionEvent actionEvent) throws Exception {
-        if(name.getText().isEmpty()) { return; }
+        SoundBox.playButtonClickSound();
+
+        if(getCurrGame().getWinner() == 0 &&  name.getText().isEmpty()) { return; }
 
         // S'il a gagné
         if(getCurrGame().getWinner() == 0) {
@@ -56,7 +60,6 @@ public class FinController extends BaseController {
             Score score = new Score(name.getText(), duree, getCurrGame().getNbCoup());
             writer.insertScore(score);
         }
-
 
         changeStage(ACCUEIL_FXML, new AccueilController(getStage()));
     }

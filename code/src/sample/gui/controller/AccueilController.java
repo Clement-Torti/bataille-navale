@@ -12,6 +12,7 @@ import sample.model.Difficulty;
 import sample.model.Observer.Partie;
 import sample.model.Score;
 import sample.model.Util.ScoreReader;
+import sample.model.Util.SoundBox;
 
 import java.io.IOException;
 
@@ -43,6 +44,9 @@ public class AccueilController extends BaseController {
     @FXML
     private void initialize()
     {
+        // Musique
+        SoundBox.playAccueilMusic();
+
         // Permet de créer un groupe de RadioButton et donc il n'y a qu'un RadioButton qui peut être coché
         boutonFacile.setToggleGroup(group);
         boutonNormal.setToggleGroup(group);
@@ -60,6 +64,10 @@ public class AccueilController extends BaseController {
 
     @FXML
     private void start(ActionEvent actionEvent) throws Exception {
+        // Stop musique
+        SoundBox.stopBackgroundMusic();
+        SoundBox.playButtonClickSound();
+
         Partie game;
 
         // Create the game
@@ -73,10 +81,12 @@ public class AccueilController extends BaseController {
 
         setCurrGame(game);
         changeStage(BATAILLE_FXML, new BatailleController(getStage(), getCurrGame()));
+
     }
 
     @FXML
     private void infos(ActionEvent actionEvent) throws IOException {
+        SoundBox.playButtonClickSound();
         openStage(INFOS_FXML, 800, 500);
     }
 

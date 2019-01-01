@@ -23,8 +23,8 @@ import java.util.List;
 public abstract class Grille extends GridPane implements IObserver {
     protected final int NB_ROW = 11;
     protected final int NB_COLUMN = 11;
-    protected final int WIDHT = 600;
-    protected final int HEIGHT = 600;
+    protected final int WIDHT = 700;
+    protected final int HEIGHT = 700;
 
     protected Subject subject;
 
@@ -49,6 +49,7 @@ public abstract class Grille extends GridPane implements IObserver {
         // Ajout des labels (0, 1, 2 ..)
         for(int i=1; i<NB_COLUMN; i++) {
             Label l = new Label();
+            l.setId("labelInfo");
             l.setText(Integer.toString(i -1));
             this.add(l, i, 0);
         }
@@ -56,6 +57,7 @@ public abstract class Grille extends GridPane implements IObserver {
         // Ajout des labels (A, B ...)
         for(int i = 0; i< NB_ROW-1; i++) {
             Label l = new Label();
+            l.setId("labelInfo");
             String text = "" + ((char)('A' + i));
             l.setText(text);
             this.add(l, 0, i+1);
@@ -106,8 +108,9 @@ public abstract class Grille extends GridPane implements IObserver {
 
                 for (Point point : boat) {
                     CaseButton oldB = buttonList[point.x][point.y];
-                    this.getChildren().remove(oldB);
+                    this.getChildren().remove(buttonList[point.x][point.y]);
                     CaseButton newB = new KillDecoratorButton(oldB);
+                    buttonList[point.x][point.y] = newB;
                     newB.setPrefSize(WIDHT/NB_ROW, WIDHT/NB_COLUMN);
                     this.add(newB, point.x + 1, point.y + 1);
                 }
@@ -119,8 +122,8 @@ public abstract class Grille extends GridPane implements IObserver {
         }
 
         this.getChildren().remove(oldBtn);
+        buttonList[p.x][p.y] = newBtn;
         newBtn.setPrefSize(WIDHT/NB_ROW, WIDHT/NB_COLUMN);
-
         this.add(newBtn, p.x + 1, p.y + 1);
 
     }

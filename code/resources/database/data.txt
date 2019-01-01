@@ -1,5 +1,9 @@
-1//Clément Torti//560 sec//20
-2//Big D//37 sec//38
-3//Le Boss//0 sec//45
-4//Jack//139 sec//50
-5//Noé Torti//1024 sec//128
+1//BoGosse//24 sec//23
+2//GG//33 sec//24
+3//Clément Torti//42 sec//29
+4//Hervé//60 sec//32
+5//Vernon//31 sec//38
+6//Big D//37 sec//38
+7//Le Boss//0 sec//45
+8//Jack//139 sec//50
+9//Noé//1024 sec//128

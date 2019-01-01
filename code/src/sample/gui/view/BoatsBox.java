@@ -21,7 +21,7 @@ public class BoatsBox extends HBox {
     public BoatsBox() {
         super();
 
-        Insets insets = new Insets(0, 50, 0, 50);
+        Insets insets = new Insets(20, 50, 20, 50);
         this.setPadding(insets);
 
         // Create 5 boats
