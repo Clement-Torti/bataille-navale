@@ -91,9 +91,10 @@ public class Partie extends Subject {
             int i;
 
             for(i=1; i<size; i++) {
+                int newI = i -(leftDownOffset - 1);
                 if(vertical) {
-                    if(!chosedPoints.contains(new Point(p.x, min(p.y+i, 9)))) {
-                        Point newP = new Point(p.x, min(p.y+i, 9));
+                    if(!chosedPoints.contains(new Point(p.x, min(p.y+newI, 9)))) {
+                        Point newP = new Point(p.x, min(p.y+newI, 9));
                         chosedPoints.add(newP);
                         porteAvion.add(newP);
                         continue;
@@ -110,8 +111,8 @@ public class Partie extends Subject {
                     break;
 
                 } else {
-                    if(!chosedPoints.contains(new Point(min(p.x+i, 9), p.y))) {
-                        Point newP = new Point(min(p.x+i, 9), p.y);
+                    if(!chosedPoints.contains(new Point(min(p.x+newI, 9), p.y))) {
+                        Point newP = new Point(min(p.x+newI, 9), p.y);
                         chosedPoints.add(newP);
                         porteAvion.add(newP);
                         continue;
