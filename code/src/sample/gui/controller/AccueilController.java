@@ -88,7 +88,7 @@ public class AccueilController extends BaseController {
     @FXML
     private void infos(ActionEvent actionEvent) throws IOException {
         SoundBox.playButtonClickSound();
-        openStage(INFOS_FXML, 800, 500);
+        openStage(INFOS_FXML, 1000, 700);
     }
 
 

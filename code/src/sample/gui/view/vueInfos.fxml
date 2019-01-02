@@ -1,66 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
-<?import com.sun.javafx.scene.control.skin.SplitPaneSkin.Content?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: #777777;">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-    <VBox>
-        <Label>Coucou</Label>
-        <Label>Ne pas mettre de bouton pour fermer la fenêtre. On fermera avec la croix.</Label>
 
-        <HBox>
-            <Label>Le nombre de bateaux non coulés</Label>
-            <ImageView>
-                <image>
-                    <Image url="/images/boat.png" requestedHeight="50" requestedWidth="50" preserveRatio="true"/>
-                </image>
-            </ImageView>
-        </HBox>
+<VBox id="main" stylesheets="/css/vueInfos.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
 
-        <HBox>
-            <Label>Partie d'un bateau non touché sur la grille de jeu</Label>
-            <ImageView>
-                <image>
-                    <Image url="/images/boatIcon.png" requestedHeight="50" requestedWidth="50" preserveRatio="true"/>
-                </image>
-            </ImageView>
-        </HBox>
+    <VBox id="VBoxBienvenue" alignment="CENTER">
+        <!-- le VBox.margin qui suit, correspond au VBox global de la fenêtre -->
+        <VBox.margin>
+            <Insets left="40" right="40" top="60" />
+        </VBox.margin>
 
-        <HBox>
-            <Label>Le nombre de bateaux coulés</Label>
-            <ImageView>
-                <image>
-                    <Image url="/images/destroyBoat.png" requestedHeight="50" requestedWidth="50" preserveRatio="true"/>
-                </image>
-            </ImageView>
-        </HBox>
 
-        <HBox>
-            <Label>Bateaux coulés sur la grille de jeu</Label>
-            <ImageView>
-                <image>
-                    <Image url="/images/explosionIcon.gif" requestedHeight="50" requestedWidth="50" preserveRatio="true"/>
-                </image>
-            </ImageView>
-        </HBox>
+        <Label id="labelBienvenue">
+            <VBox.margin>
+                <Insets top="20"/>
+            </VBox.margin>
+            Bienvenue dans cette nouvelle version de la Bataille Navale, qui reprend le principe du jeu far du même nom.
+        </Label>
 
-        <HBox>
-            <Label>Partie d'un bateau touché sur la grille de jeu</Label>
-            <ImageView>
-                <image>
-                    <Image url="/images/touchedBoatIcon.png" requestedHeight="50" requestedWidth="50" preserveRatio="true"/>
-                </image>
-            </ImageView>
-        </HBox>
+        <Label>
+            <VBox.margin>
+                <Insets top="20"/>
+            </VBox.margin>
+            Dans ce nouveau jeu, vous pourrez affronter une Intelligence Artificielle avec plusieurs niveaux de difficulté :
+        </Label>
+
+        <Label>
+            <VBox.margin>
+                <Insets top="10"/>
+            </VBox.margin>
+            Facile (même un bébé jouerait mieux ^_^)
+        </Label>
+
+        <Label>
+            <VBox.margin>
+                <Insets top="10"/>
+            </VBox.margin>
+            Normal (ba elle est normale quoi, elle joue comme n'importe quel humain)
+        </Label>
+
+        <Label>
+            <VBox.margin>
+                <Insets top="10" bottom="20"/>
+            </VBox.margin>
+            Difficile (oula..., alors là bonne chance pour réussir à battre une IA cheatée)
+        </Label>
 
     </VBox>
 
-</AnchorPane>
+
+    <VBox id="ensIcons">
+        <VBox.margin>
+            <Insets top="40" right="40" left="40"/>
+        </VBox.margin>
+
+
+        <HBox id="icon1" alignment="CENTER">
+            <VBox.margin>
+                <Insets top="20"/>
+            </VBox.margin>
+            <Label id="icon">Le nombre de bateaux non coulés</Label>
+            <ImageView>
+                <!-- On veut des marges par rapport au HBox -->
+                <HBox.margin>
+                    <Insets left="40"/>
+                </HBox.margin>
+                <image>
+                    <Image preserveRatio="true" requestedHeight="50" requestedWidth="50" url="/images/boat.png"/>
+                </image>
+            </ImageView>
+        </HBox>
+
+
+        <HBox id="icon2" alignment="CENTER">
+            <VBox.margin>
+                <Insets top="20"/>
+            </VBox.margin>
+            <Label id="icon">Partie d'un bateau non touché sur la grille de jeu</Label>
+            <ImageView>
+                <HBox.margin>
+                    <Insets left="40"/>
+                </HBox.margin>
+                <image>
+                    <Image preserveRatio="true" requestedHeight="50" requestedWidth="50" url="/images/boatIcon.png" />
+                </image>
+            </ImageView>
+        </HBox>
+
+
+        <HBox id="icon3" alignment="CENTER">
+            <VBox.margin>
+                <Insets top="20"/>
+            </VBox.margin>
+            <Label id="icon">Le nombre de bateaux coulés</Label>
+            <ImageView>
+                <HBox.margin>
+                    <Insets left="40"/>
+                </HBox.margin>
+                <image>
+                    <Image preserveRatio="true" requestedHeight="50" requestedWidth="50" url="/images/destroyBoat.png" />
+                </image>
+            </ImageView>
+        </HBox>
+
+
+        <HBox id="icon4" alignment="CENTER">
+            <VBox.margin>
+                <Insets top="20"/>
+            </VBox.margin>
+            <Label id="icon">Bateaux coulés sur la grille de jeu</Label>
+            <ImageView>
+                <HBox.margin>
+                    <Insets left="40"/>
+                </HBox.margin>
+                <image>
+                    <Image preserveRatio="true" requestedHeight="50" requestedWidth="50" url="/images/explosionIcon.gif" />
+                </image>
+            </ImageView>
+        </HBox>
+
+
+        <HBox id="icon5" alignment="CENTER">
+            <VBox.margin>
+                <Insets top="20" bottom="20"/>
+            </VBox.margin>
+            <Label id="icon">Partie d'un bateau touché sur la grille de jeu</Label>
+            <ImageView>
+                <HBox.margin>
+                    <Insets left="40"/>
+                </HBox.margin>
+                <image>
+                    <Image preserveRatio="true" requestedHeight="50" requestedWidth="50" url="/images/touchedBoatIcon.png" />
+                </image>
+            </ImageView>
+        </HBox>
+    </VBox>
+
+
+    <HBox alignment="CENTER">
+        <VBox.margin>
+            <Insets left="200" right="200" top="10" />
+        </VBox.margin>
+        <Label id="labelFin">
+            <HBox.margin>
+                <Insets top="15" bottom="15"/>
+            </HBox.margin>
+            Essayez de survivre aux assauts de l'ennemi. Bonne chance !!
+        </Label>
+    </HBox>
+
+
+    <HBox id="HBoxDeveloppeurs" alignment="CENTER">
+        <VBox.margin>
+            <Insets left="200" right="200" top="10" />
+        </VBox.margin>
+        <Label id="labelDeveloppeurs">
+            <HBox.margin>
+                <Insets top="15" bottom="15"/>
+            </HBox.margin>
+            Jeu réalisé par TORTI Clément et BECOUZE Florent, étudiants en DUT Informatique.
+        </Label>
+    </HBox>
+
+
+</VBox>

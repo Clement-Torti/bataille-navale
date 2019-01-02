@@ -50,8 +50,10 @@ public abstract class BaseController {
 
         newStage.setTitle("Infos");
         newStage.setScene(new Scene(root, width, height));
+        newStage.setMinWidth(width+16);
+        newStage.setMinHeight(height+39);
+        newStage.initOwner(getStage());
         newStage.showAndWait();
-
     }
 
     protected Partie getCurrGame() {

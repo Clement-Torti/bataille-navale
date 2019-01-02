@@ -29,6 +29,8 @@ public class Main extends Application {
 
         primaryStage.setTitle("Bataille Navale");
         primaryStage.setScene(new Scene(root, WIN_WIDTH, WIN_HEIGHT));
+        primaryStage.setMinWidth(WIN_WIDTH+16);
+        primaryStage.setMinHeight(WIN_HEIGHT+39);
         //primaryStage.getIcons().setAll(new Image(getClass().getResource("images/logo.png").toExternalForm()));
         primaryStage.show();
     }
