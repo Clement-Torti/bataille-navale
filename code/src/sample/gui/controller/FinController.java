@@ -51,7 +51,7 @@ public class FinController extends BaseController {
         SoundBox.stopBackgroundMusic();
         SoundBox.playAccueilMusic();
 
-        if(getCurrGame().getWinner() == 0 &&  name.getText().isEmpty()) { return; }
+        if(getCurrGame().getWinner() == 0 && name.getText().isEmpty()) { return; }
 
         // S'il a gagné
         if(getCurrGame().getWinner() == 0) {

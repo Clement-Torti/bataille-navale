@@ -24,7 +24,7 @@
             </VBox.margin>
         </ImageView>
 
-        <Button text="Retour" onAction="#resume" textAlignment="LEFT" focusTraversable="false" minWidth="150">
+        <Button text="Retour" onAction="#resume" focusTraversable="false" minWidth="150">
             <VBox.margin>
                 <Insets bottom="40"/>
             </VBox.margin>

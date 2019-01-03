@@ -57,7 +57,7 @@ public class BatailleController extends BaseController implements IObserver {
 	    iaGrid.configureButtons(getCurrGame().getIaGrid());
 	    playerGrid.configureButtons(getCurrGame().getPlayerGrid());
 
-	    // Initialize les connections entre notifieurs et notifiés
+	    // Initialize les connexions entre notifieurs et notifiés
         getCurrGame().attach(iaGrid);
         getCurrGame().attach(playerGrid);
         getCurrGame().attach(this);
@@ -65,7 +65,7 @@ public class BatailleController extends BaseController implements IObserver {
         playerGrid.setSubject(getCurrGame());
 
 
-        // Bind les messages à la list de Partie
+        // Bind les messages à la liste de Partie
         iaMessage.setItems(getCurrGame().getIaMessage());
         playerMessage.setItems(getCurrGame().getPlayerMessage());
 
@@ -117,7 +117,7 @@ public class BatailleController extends BaseController implements IObserver {
 
     @Override
     public void update(){
-        // Vérifie si la partie est fini
+        // Vérifie si la partie est finie
         if(getCurrGame().getWinner() != -1) {
             finish();
         }

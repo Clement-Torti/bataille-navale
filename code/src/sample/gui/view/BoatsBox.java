@@ -42,6 +42,7 @@ public class BoatsBox extends HBox {
         // Il ne reste aucun bateau
         if(nbDestroyedBoat == NB_BOATS) return;
 
+        // On récupère dans la liste le bateau, à l'indice du nbre de bateaux détruits
         imageViewList.get(nbDestroyedBoat).setImage(new Image("/images/destroyBoat.png"));
         nbDestroyedBoat++;
     }
