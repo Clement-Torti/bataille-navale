@@ -3,6 +3,8 @@ package sample.gui.controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import sample.model.Observer.Partie;
 
@@ -53,6 +55,7 @@ public abstract class BaseController {
         newStage.setMinWidth(width+16);
         newStage.setMinHeight(height+39);
         newStage.initOwner(getStage());
+        newStage.getIcons().add(new Image("/images/logo.png"));
         newStage.showAndWait();
     }
 
