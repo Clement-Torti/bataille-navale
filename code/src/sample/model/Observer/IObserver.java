@@ -1,7 +1,7 @@
 package sample.model.Observer;
 
-public abstract interface IObserver {
+public interface IObserver {
 
-    public abstract void update();
+    void update();
 
 }

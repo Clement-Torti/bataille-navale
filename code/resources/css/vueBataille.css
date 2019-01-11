@@ -32,9 +32,21 @@
     -fx-padding: 0;
 }
 
-
+.list-cell {
+    -fx-background-radius: 10 10 10 10;
+    -fx-border-radius: 10 10 10 10;
+}
 
 #labelInfo {
 	-fx-text-fill: white;
 	-fx-font-size: 16px;
+}
+
+
+#caseBtn {
+    -fx-margin: 0;
+    -fx-padding: 0;
+    -fx-background-color: white;
+    -fx-border-width: 1;
+    -fx-border-color: gray;
 }
