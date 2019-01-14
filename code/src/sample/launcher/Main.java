@@ -43,6 +43,6 @@ public class Main extends Application {
 
     @Override
     public void stop() throws Exception {
-        // Enregistrement de la partie en cours
+
     }
 }

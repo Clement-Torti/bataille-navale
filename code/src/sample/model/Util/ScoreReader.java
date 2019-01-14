@@ -53,6 +53,6 @@ public class ScoreReader {
         int nbCoup = Integer.parseInt(split[3]);
 
         return new Score(pos, name, duree, nbCoup);
-
     }
+
 }

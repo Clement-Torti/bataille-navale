@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Subject {
-    private List<IObserver> observers = new ArrayList<IObserver>();
+    private List<IObserver> observers = new ArrayList<>();
     protected boolean isPlayerTurn = true;
     protected int state = 0;
     protected Point coordinate;

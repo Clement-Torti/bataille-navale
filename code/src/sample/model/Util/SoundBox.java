@@ -38,10 +38,9 @@ public class SoundBox {
     private static void playBackgroundMusic(String musicFile) {
         if(backgroundPlayer != null) { return; }
         File f = new File(musicFile);
-
         Media sound = new Media(f.toURI().toString());
-        backgroundPlayer = new MediaPlayer(sound);
 
+        backgroundPlayer = new MediaPlayer(sound);
         backgroundPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         backgroundPlayer.setVolume(0.3);
         backgroundPlayer.play();

@@ -2,7 +2,6 @@ package sample.model.Observer;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import sample.gui.view.Grille;
 import sample.model.Difficulty;
 import sample.model.GrilleMdl;
 import sample.model.IAStrategie.IA;
@@ -51,14 +50,14 @@ public class Partie extends Subject {
     }
 
     private void initializeGrids() {
-        List<ArrayList<Point>> boats = generateRandomPos();
+        List<List<Point>> boats = generateRandomPos();
         iaGrid = new GrilleMdl(boats);
 
         boats = generateRandomPos();
         playerGrid = new GrilleMdl(boats);
     }
 
-    private List<ArrayList<Point>> generateRandomPos() {
+    private List<List<Point>> generateRandomPos() {
         // 5 bateaux au total
         // 1 porte avion (5 cases)
         // 1 croiseur (4 cases)
@@ -66,7 +65,7 @@ public class Partie extends Subject {
         // 1 sous-marin (3 cases)
         // 1 torpilleur (2 cases)
         Random r = new Random();
-        List<ArrayList<Point>> boats = new ArrayList<ArrayList<Point>>();
+        List<List<Point>> boats = new ArrayList<>();
         List<Point> chosedPoints = new ArrayList<>();
         int[] boatsSize = {5, 4, 3, 3, 2};
 
@@ -75,7 +74,7 @@ public class Partie extends Subject {
             int size = boatsSize[j];
 
             // Création du bateau
-            ArrayList<Point> porteAvion = new ArrayList<>();
+            List<Point> porteAvion = new ArrayList<>();
 
             // Choix d'un premier point valide
             Point p = new Point(r.nextInt(10), r.nextInt(10));
@@ -203,7 +202,7 @@ public class Partie extends Subject {
 
     @Override
     public List<Point> getBoat(Point p, boolean isPlayerGrid) {
-        List<ArrayList<Point>> boats = isPlayerGrid ? playerGrid.getBoats() : iaGrid.getBoats();
+        List<List<Point>> boats = isPlayerGrid ? playerGrid.getBoats() : iaGrid.getBoats();
         for(List<Point> boat: boats) {
             if(boat.contains(p)) {
                 return boat;
