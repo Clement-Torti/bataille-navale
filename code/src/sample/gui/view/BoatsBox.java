@@ -16,7 +16,8 @@ public class BoatsBox extends HBox {
     public final int BOAT_HEIGHT = 40;
 
     private List<ImageView> imageViewList = new ArrayList<>();
-    int nbDestroyedBoat = 0;
+
+    private int nbDestroyedBoat = 0;
 
     public BoatsBox() {
         super();

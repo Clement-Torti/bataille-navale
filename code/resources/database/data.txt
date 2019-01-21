@@ -2,16 +2,17 @@
 2//GG//33 sec//24
 3//Clément Torti//42 sec//29
 4//Hervé//60 sec//32
-5//Vernon//31 sec//38
-6//Big D//37 sec//38
-7//Florent//33 sec//43
-8//Le Boss//0 sec//45
-9//Florent//49 sec//49
-10//Clément//135 sec//50
-11//Jack//139 sec//50
-12//Florent//46 sec//52
-13//Florent//100 sec//55
-14//Florent//55 sec//56
-15//Florent//52 sec//63
-16//Florent//114 sec//76
-17//Noé//1024 sec//128
+5//Florent//65 sec//38
+6//Vernon//31 sec//38
+7//Big D//37 sec//38
+8//Florent//33 sec//43
+9//Le Boss//0 sec//45
+10//Florent//49 sec//49
+11//Clément//135 sec//50
+12//Jack//139 sec//50
+13//Florent//46 sec//52
+14//Florent//100 sec//55
+15//Florent//55 sec//56
+16//Florent//52 sec//63
+17//Florent//114 sec//76
+18//Noé//1024 sec//128

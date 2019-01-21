@@ -69,6 +69,21 @@ public class BatailleController extends BaseController implements IObserver {
         iaMessage.setItems(getCurrGame().getIaMessage());
         playerMessage.setItems(getCurrGame().getPlayerMessage());
 
+        // Récupération des bateaux détruits (utile par exemple lors d'un retour de la page de pause)
+        // On détruit le nombre de bateaux actuellement détruits
+        // A chaque fois que l'on revient sur la vue, on re-créer les BoatsBox (avec le nbDestroyedBoat à 0)
+        // c'est pour ça que l'on récupère les listes des bateaux détruits de la partie (qui n'ont pas étaient vidées)
+        for(int i=0; i<getCurrGame().getIaGrid().getDestroyedBoats().size(); i++)
+        {
+            iaBoatsBox.destroyBoat();
+        }
+
+        for (int i=0; i<getCurrGame().getPlayerGrid().getDestroyedBoats().size(); i++)
+        {
+            playerBoatsBox.destroyBoat();
+        }
+
+
         // Initialisation du timer
         timer = new Timer();
         TimerTask task = new TimerTask() {

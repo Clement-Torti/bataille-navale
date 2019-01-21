@@ -21,6 +21,10 @@ public class TouchedDecoratorButton extends DecoratorButton {
         imgV.setFitHeight(ICON_SIZE);
         imgV.setPreserveRatio(true);
 
+        Rectangle rect = new Rectangle(ICON_SIZE, ICON_SIZE);
+        rect.setFill(Color.WHITE);
+
+        icons.getChildren().add(rect);
         icons.getChildren().add(imgV);
 
     }
