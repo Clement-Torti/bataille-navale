@@ -13,8 +13,9 @@
 13//Jack//139 sec//50
 14//Florent//46 sec//52
 15//Florent//100 sec//55
-16//Florent//55 sec//56
-17////73 sec//57
-18//Florent//52 sec//63
-19//Florent//114 sec//76
-20//Noé//1024 sec//128
+16//Florent//72 sec//56
+17//Florent//55 sec//56
+18////73 sec//57
+19//Florent//52 sec//63
+20//Florent//114 sec//76
+21//Noé//1024 sec//128

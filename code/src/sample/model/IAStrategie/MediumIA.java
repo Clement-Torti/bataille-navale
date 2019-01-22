@@ -51,8 +51,8 @@ public class MediumIA extends IA {
                 } else if(!grille.getDiscovered().contains(new Point(max(point.x-1, 0), point.y))) {
                     return new Point(max(point.x-1, 0), point.y);
 
-                } else if(!grille.getDiscovered().contains(new Point(max(point.x, 0), max(point.y - 1, 0)))) {
-                    return new Point(max(point.x, 0), max(point.y - 1, 0));
+                } else if(!grille.getDiscovered().contains(new Point(max(point.x-1, 0), max(point.y - 1, 0)))) {
+                    return new Point(max(point.x-1, 0), max(point.y - 1, 0));
                 }
             }
         }
