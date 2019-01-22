@@ -7,12 +7,14 @@
 7//Big D//37 sec//38
 8//Florent//33 sec//43
 9//Le Boss//0 sec//45
-10//Florent//49 sec//49
-11//Clément//135 sec//50
-12//Jack//139 sec//50
-13//Florent//46 sec//52
-14//Florent//100 sec//55
-15//Florent//55 sec//56
-16//Florent//52 sec//63
-17//Florent//114 sec//76
-18//Noé//1024 sec//128
+10//Clément//142 sec//48
+11//Florent//49 sec//49
+12//Clément//135 sec//50
+13//Jack//139 sec//50
+14//Florent//46 sec//52
+15//Florent//100 sec//55
+16//Florent//55 sec//56
+17////73 sec//57
+18//Florent//52 sec//63
+19//Florent//114 sec//76
+20//Noé//1024 sec//128
